@@ -1,0 +1,44 @@
+/* * IMPORT EXTERNAL TYPOGRAPHY
+ * Loads 'Lato' (Sans-serif) for body text and 'Playfair Display' (Serif) for headings.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* * INITIALIZE TAILWIND CSS
+ * Injects Tailwind's base styles, component classes, and utility classes.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* * GLOBAL DESIGN TOKENS
+ * Applies the foundational 'Quiet Luxury' theme variables to the HTML document.
+ */
+@layer base {
+  body {
+    /* * Applies the custom 'Bone' color (#F2F1EF) to the background.
+     * Sets the primary text color to 'Midnight' (#1A1A2E).
+     * Enforces the 'Lato' font family as the default.
+     */
+    @apply bg-bone text-midnight font-sans antialiased;
+  }
+  
+  /* * HEADING TYPOGRAPHY
+   * Enforces 'Playfair Display' for all heading levels to establish editorial authority.
+   */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+/* * UTILITY CLASSES
+ * Custom classes for specific UI elements.
+ */
+@layer utilities {
+  /* * GLASSMORPHISM PANEL
+   * Creates a frosted glass effect used for search bars and overlays.
+   * Uses a white tint with 10% opacity and a heavy background blur.
+   */
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+}

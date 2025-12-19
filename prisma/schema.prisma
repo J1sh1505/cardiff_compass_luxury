@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// THE BLUEPRINT
+// This tells the database exactly what columns to create
+model Venue {
+  id          String   @id // e.g. "pasture"
+  name        String
+  category    String   // e.g. "gastronomy"
+  tagline     String
+  heroImage   String
+  
+  // Detailed Description
+  dropCap     String
+  lead        String
+  body        String
+  curatorNote String
+  
+  // Images (Stored as a list of text links)
+  gallery     String[]
+  
+  // Contact Details
+  address     String
+  hours       String
+  phone       String
+  website     String
+
+  // Metadata (Good practice to keep track of when things were added)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Booking {
+  id        String   @id @default(uuid())
+  userId    String   // We will save the logged-in user's ID here
+  venueId   String?  // Optional link to the venue table
+  venueName String   // We save the name directly so it's easy to read later
+  date      String
+  time      String
+  guests    String
+  createdAt DateTime @default(now())
+}
